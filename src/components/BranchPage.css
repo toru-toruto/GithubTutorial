@@ -287,6 +287,20 @@
   font-family: "SF Mono", "Cascadia Code", "Fira Code", ui-monospace, monospace;
 }
 
+/* ---------- guide arrow ---------- */
+.bp-guide-arrow {
+  animation: bp-bounce 1s ease-in-out infinite;
+}
+
+@keyframes bp-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
 .bp-node-g {
   cursor: pointer;
 }

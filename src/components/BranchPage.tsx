@@ -49,7 +49,7 @@ const NODE_R = 14;
 const X_SPACING = 72;
 const Y_SPACING = 56;
 const PAD_LEFT = 180;
-const PAD_TOP = 36;
+const PAD_TOP = 90;
 const PAD_RIGHT = 48;
 const PAD_BOTTOM = 36;
 
@@ -387,6 +387,41 @@ export default function BranchPage() {
               />
             );
           })}
+
+          {/* guide arrow when nothing selected */}
+          {!selectedId && (() => {
+            const first = commits[0];
+            const fp = pos(first);
+            const arrowTop = fp.y - NODE_R - 40;
+            const arrowBottom = fp.y - NODE_R - 8;
+            return (
+              <g className="bp-guide-arrow">
+                <line
+                  x1={fp.x}
+                  y1={arrowTop}
+                  x2={fp.x}
+                  y2={arrowBottom}
+                  stroke="#f59e0b"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                />
+                <polygon
+                  points={`${fp.x - 6},${arrowBottom - 4} ${fp.x},${arrowBottom + 4} ${fp.x + 6},${arrowBottom - 4}`}
+                  fill="#f59e0b"
+                />
+                <text
+                  x={fp.x}
+                  y={arrowTop - 6}
+                  textAnchor="middle"
+                  fontSize="12"
+                  fontWeight="700"
+                  fill="#f59e0b"
+                >
+                  クリック!
+                </text>
+              </g>
+            );
+          })()}
 
           {/* commit nodes */}
           {commits.map((c) => {
