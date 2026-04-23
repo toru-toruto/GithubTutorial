@@ -1,0 +1,86 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100svh;
+  overflow: hidden;
+}
+
+/* ---------- header ---------- */
+.app-header {
+  text-align: center;
+  padding: 24px 24px 12px;
+  flex-shrink: 0;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: #1e293b;
+}
+
+.subtitle {
+  margin: 6px 0 16px;
+  font-size: 14px;
+  color: #64748b;
+}
+
+/* branch input */
+.branch-input-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 6px 14px;
+}
+
+.branch-input-wrapper label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #475569;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.branch-icon {
+  font-size: 16px;
+}
+
+.branch-input-wrapper input {
+  border: none;
+  background: transparent;
+  font-family: "SF Mono", "Cascadia Code", "Fira Code", ui-monospace, monospace;
+  font-size: 14px;
+  color: #1e293b;
+  outline: none;
+  width: 220px;
+}
+
+/* ---------- dark mode ---------- */
+@media (prefers-color-scheme: dark) {
+  .app-header h1 {
+    color: #f1f5f9;
+  }
+
+  .subtitle {
+    color: #94a3b8;
+  }
+
+  .branch-input-wrapper {
+    background: #1e293b;
+    border-color: #334155;
+  }
+
+  .branch-input-wrapper label {
+    color: #94a3b8;
+  }
+
+  .branch-input-wrapper input {
+    color: #e2e8f0;
+  }
+}

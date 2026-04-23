@@ -1,0 +1,137 @@
+.board {
+  flex-shrink: 0;
+  padding: 24px 32px 12px;
+  overflow-x: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.board-track {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 8px 0;
+  min-width: min-content;
+}
+
+.board-cell {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* ---------- connector ---------- */
+.connector {
+  display: flex;
+  align-items: center;
+  width: 40px;
+  flex-shrink: 0;
+}
+
+.connector-arrow {
+  width: 40px;
+  height: 12px;
+}
+
+/* ---------- node ---------- */
+.node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 88px;
+  padding: 14px 8px 12px;
+  border: 2px solid var(--node-color);
+  border-radius: 16px;
+  background: #fff;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.node:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px color-mix(in srgb, var(--node-color) 30%, transparent);
+}
+
+.node--selected {
+  background: color-mix(in srgb, var(--node-color) 12%, #fff);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--node-color) 40%, transparent);
+  transform: translateY(-4px);
+}
+
+.node-icon {
+  font-size: 28px;
+  line-height: 1;
+}
+
+.node-step {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--node-color);
+}
+
+.node-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #334155;
+  line-height: 1.3;
+}
+
+/* ---------- loop hint ---------- */
+.board-loop-hint {
+  position: relative;
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loop-arrow {
+  width: 200px;
+  height: 30px;
+}
+
+.loop-text {
+  position: absolute;
+  font-size: 11px;
+  color: #94a3b8;
+  font-weight: 600;
+  bottom: -2px;
+}
+
+/* ---------- dark mode ---------- */
+@media (prefers-color-scheme: dark) {
+  .node {
+    background: #1e293b;
+  }
+
+  .node--selected {
+    background: color-mix(in srgb, var(--node-color) 18%, #1e293b);
+  }
+
+  .node-label {
+    color: #e2e8f0;
+  }
+
+  .connector-arrow line {
+    stroke: #475569;
+  }
+  .connector-arrow polygon {
+    fill: #475569;
+  }
+
+  .loop-arrow path {
+    stroke: #475569;
+  }
+  .loop-arrow polygon {
+    fill: #475569;
+  }
+  .loop-text {
+    color: #64748b;
+  }
+}
