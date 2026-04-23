@@ -22,6 +22,21 @@ export const phases: Phase[] = [
   },
   {
     id: 2,
+    label: "Install",
+    icon: "📦",
+    color: "#66BB6A",
+    commands: () => [
+      "npm install",
+      "# または",
+      "pnpm install",
+      "# または",
+      "yarn install",
+    ],
+    description:
+      "依存パッケージをインストールします。プロジェクトのpackage.jsonに記載されたライブラリをダウンロードします。npm / pnpm / yarnなど、プロジェクトのロックファイルに合わせたパッケージマネージャーを使いましょう。",
+  },
+  {
+    id: 3,
     label: "ブランチ作成",
     icon: "🌿",
     color: "#8BC34A",
@@ -32,7 +47,7 @@ export const phases: Phase[] = [
       "作業用のブランチを作成して切り替えます。mainブランチで直接作業せず、必ずfeatureブランチを切りましょう。ブランチ名は「feature/機能名」のように命名するのが一般的です。",
   },
   {
-    id: 3,
+    id: 4,
     label: "コード変更",
     icon: "✏️",
     color: "#FF9800",
@@ -45,7 +60,7 @@ export const phases: Phase[] = [
       "ファイルを編集して変更を加えます。git statusで変更状況を確認し、git diffで差分を確認できます。こまめにstatusを確認する癖をつけましょう。",
   },
   {
-    id: 4,
+    id: 5,
     label: "Commit",
     icon: "💾",
     color: "#FF5722",
@@ -57,7 +72,7 @@ export const phases: Phase[] = [
       "変更をステージングしてコミットします。git addで変更をステージに上げ、git commitでスナップショットを保存します。コミットメッセージはわかりやすく書きましょう。",
   },
   {
-    id: 5,
+    id: 6,
     label: "Push",
     icon: "🚀",
     color: "#2196F3",
@@ -68,7 +83,7 @@ export const phases: Phase[] = [
       "ローカルの変更をリモートリポジトリに反映します。初回pushでリモートにブランチが作成されます。pushすることでチームメンバーがあなたの変更を見られるようになります。",
   },
   {
-    id: 6,
+    id: 7,
     label: "PR作成",
     icon: "📝",
     color: "#9C27B0",
@@ -81,7 +96,7 @@ export const phases: Phase[] = [
       "Pull Requestを作成してコードレビューを依頼します。変更の目的・内容を説明し、レビュアーをアサインしましょう。PRはチーム開発におけるコミュニケーションの場です。",
   },
   {
-    id: 7,
+    id: 8,
     label: "コンフリクト!?",
     icon: "⚠️",
     color: "#f44336",
@@ -99,7 +114,7 @@ export const phases: Phase[] = [
       "他の人の変更と衝突が発生することがあります。まずmainを最新にし、自分のブランチにmergeして、手動で競合箇所を解決します。<<<< ==== >>>>のマーカーを探して正しいコードに修正しましょう。",
   },
   {
-    id: 8,
+    id: 9,
     label: "レビュー & Merge",
     icon: "✅",
     color: "#00BCD4",
@@ -112,7 +127,7 @@ export const phases: Phase[] = [
       "レビュアーがコードをチェックし、Approveされたらmainブランチにマージします。Squash MergeやRebase Mergeなどマージ戦略はチームで統一しましょう。",
   },
   {
-    id: 9,
+    id: 10,
     label: "mainをPull",
     icon: "🔄",
     color: "#009688",
@@ -124,7 +139,7 @@ export const phases: Phase[] = [
       "マージ後、ローカルのmainを最新に更新します。次の作業を始める前に必ずpullして、最新のコードベースから作業を開始しましょう。",
   },
   {
-    id: 10,
+    id: 11,
     label: "次のブランチへ!",
     icon: "🔁",
     color: "#607D8B",

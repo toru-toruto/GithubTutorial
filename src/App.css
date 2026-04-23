@@ -5,6 +5,38 @@
   overflow: hidden;
 }
 
+/* ---------- nav tabs ---------- */
+.app-nav {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  padding: 12px 24px 0;
+  flex-shrink: 0;
+}
+
+.nav-tab {
+  padding: 8px 20px;
+  border: none;
+  border-radius: 10px 10px 0 0;
+  background: #e2e8f0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #64748b;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.nav-tab:hover {
+  background: #cbd5e1;
+  color: #334155;
+}
+
+.nav-tab--active {
+  background: #f8fafc;
+  color: #1e293b;
+  cursor: default;
+}
+
 /* ---------- header ---------- */
 .app-header {
   text-align: center;
@@ -63,6 +95,21 @@
 
 /* ---------- dark mode ---------- */
 @media (prefers-color-scheme: dark) {
+  .nav-tab {
+    background: #1e293b;
+    color: #64748b;
+  }
+
+  .nav-tab:hover {
+    background: #334155;
+    color: #e2e8f0;
+  }
+
+  .nav-tab--active {
+    background: #0f172a;
+    color: #f1f5f9;
+  }
+
   .app-header h1 {
     color: #f1f5f9;
   }
