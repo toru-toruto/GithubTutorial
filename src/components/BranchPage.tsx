@@ -62,7 +62,7 @@ export default function BranchPage() {
   const [mergeMode, setMergeMode] = useState(false);
   const [nextOrder, setNextOrder] = useState(1);
   const [cmdLogs, setCmdLogs] = useState<CmdLog[]>([]);
-  const [showHelp, setShowHelp] = useState(false);
+  const [showHelp, setShowHelp] = useState(true);
   const logIdRef = useRef(0);
   const logEndRef = useRef<HTMLDivElement>(null);
 
