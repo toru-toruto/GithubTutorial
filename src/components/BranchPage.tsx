@@ -289,29 +289,6 @@ export default function BranchPage() {
         </div>
       )}
 
-      {/* command log */}
-      <div className="bp-cmdlog">
-        <h3 className="bp-cmdlog-title">Terminal</h3>
-        <div className="bp-cmdlog-body">
-          {cmdLogs.length === 0 && (
-            <span className="bp-cmdlog-empty">
-              操作するとここに対応する Git コマンドが表示されます
-            </span>
-          )}
-          {cmdLogs.map((log) => (
-            <div key={log.id} className="bp-cmdlog-entry">
-              {log.lines.map((line, i) => (
-                <div key={i} className="bp-cmdlog-line">
-                  <span className="bp-cmdlog-prompt">$</span>
-                  <code>{line}</code>
-                </div>
-              ))}
-            </div>
-          ))}
-          <div ref={logEndRef} />
-        </div>
-      </div>
-
       {/* graph */}
       <div className="bp-graph-wrap">
         <svg
@@ -499,6 +476,28 @@ export default function BranchPage() {
         </div>
       )}
 
+      {/* command log */}
+      <div className="bp-cmdlog">
+        <h3 className="bp-cmdlog-title">Terminal</h3>
+        <div className="bp-cmdlog-body">
+          {cmdLogs.length === 0 && (
+            <span className="bp-cmdlog-empty">
+              操作するとここに対応する Git コマンドが表示されます
+            </span>
+          )}
+          {cmdLogs.map((log) => (
+            <div key={log.id} className="bp-cmdlog-entry">
+              {log.lines.map((line, i) => (
+                <div key={i} className="bp-cmdlog-line">
+                  <span className="bp-cmdlog-prompt">$</span>
+                  <code>{line}</code>
+                </div>
+              ))}
+            </div>
+          ))}
+          <div ref={logEndRef} />
+        </div>
+      </div>
     </div>
   );
 }
