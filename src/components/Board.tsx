@@ -19,8 +19,8 @@ export default function Board({
 
   const updateLoop = useCallback(() => {
     const track = trackRef.current;
-    const step2 = nodeRefs.current[1]; // STEP 2 (index 1)
-    const step10 = nodeRefs.current[9]; // STEP 10 (index 9)
+    const step2 = nodeRefs.current[2]; // STEP 3 ブランチ作成 (index 2)
+    const step10 = nodeRefs.current[10]; // STEP 11 次のブランチへ! (index 10)
     if (!track || !step2 || !step10) return;
 
     const trackRect = track.getBoundingClientRect();
