@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 import "./BranchPage.css";
 
 interface Commit {
@@ -6,6 +6,11 @@ interface Commit {
   branch: string;
   parentIds: string[];
   order: number;
+}
+
+interface CmdLog {
+  id: number;
+  lines: string[];
 }
 
 const BRANCH_COLORS = [
@@ -56,8 +61,23 @@ export default function BranchPage() {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [mergeMode, setMergeMode] = useState(false);
   const [nextOrder, setNextOrder] = useState(1);
+  const [cmdLogs, setCmdLogs] = useState<CmdLog[]>([]);
+  const [logIdSeq, setLogIdSeq] = useState(0);
+  const logEndRef = useRef<HTMLDivElement>(null);
 
   const selected = commits.find((c) => c.id === selectedId) ?? null;
+
+  const pushLog = (lines: string[]) => {
+    setLogIdSeq((prev) => {
+      const newId = prev + 1;
+      setCmdLogs((logs) => [...logs, { id: newId, lines }]);
+      return newId;
+    });
+  };
+
+  useEffect(() => {
+    logEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [cmdLogs]);
 
   const colorOf = (branch: string) =>
     BRANCH_COLORS[branches.indexOf(branch) % BRANCH_COLORS.length];
@@ -90,6 +110,10 @@ export default function BranchPage() {
     setNextOrder((n) => n + 1);
     setSelectedId(nc.id);
     setMergeMode(false);
+    pushLog([
+      `git switch ${selected.branch}`,
+      `git switch -c ${name}`,
+    ]);
   };
 
   const handleCommit = () => {
@@ -106,6 +130,11 @@ export default function BranchPage() {
     setNextOrder((n) => n + 1);
     setSelectedId(nc.id);
     setMergeMode(false);
+    pushLog([
+      `git switch ${selected.branch}`,
+      "git add .",
+      `git commit -m "${selected.branch}: 変更内容の説明"`,
+    ]);
   };
 
   const handleMerge = (sourceBranch: string) => {
@@ -123,6 +152,10 @@ export default function BranchPage() {
     setNextOrder((n) => n + 1);
     setMergeMode(false);
     setSelectedId(mc.id);
+    pushLog([
+      `git switch ${selected.branch}`,
+      `git merge ${sourceBranch}`,
+    ]);
   };
 
   const handleReset = () => {
@@ -132,6 +165,7 @@ export default function BranchPage() {
     setSelectedId(null);
     setMergeMode(false);
     setNextOrder(1);
+    setCmdLogs([]);
   };
 
   /* --- layout --- */
@@ -218,6 +252,29 @@ export default function BranchPage() {
           </div>
         </div>
       )}
+
+      {/* command log */}
+      <div className="bp-cmdlog">
+        <h3 className="bp-cmdlog-title">Terminal</h3>
+        <div className="bp-cmdlog-body">
+          {cmdLogs.length === 0 && (
+            <span className="bp-cmdlog-empty">
+              操作するとここに対応する Git コマンドが表示されます
+            </span>
+          )}
+          {cmdLogs.map((log) => (
+            <div key={log.id} className="bp-cmdlog-entry">
+              {log.lines.map((line, i) => (
+                <div key={i} className="bp-cmdlog-line">
+                  <span className="bp-cmdlog-prompt">$</span>
+                  <code>{line}</code>
+                </div>
+              ))}
+            </div>
+          ))}
+          <div ref={logEndRef} />
+        </div>
+      </div>
 
       {/* graph */}
       <div className="bp-graph-wrap">
