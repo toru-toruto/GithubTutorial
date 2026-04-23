@@ -22,13 +22,15 @@ function App() {
           className={`nav-tab ${page === "sugoroku" ? "nav-tab--active" : ""}`}
           onClick={() => setPage("sugoroku")}
         >
-          🎲 すごろく
+          <span className="nav-tab-icon">🎲</span>
+          <span className="nav-tab-label">すごろく</span>
         </button>
         <button
           className={`nav-tab ${page === "branch" ? "nav-tab--active" : ""}`}
           onClick={() => setPage("branch")}
         >
-          🌿 ブランチ体験
+          <span className="nav-tab-icon">🌿</span>
+          <span className="nav-tab-label">ブランチ体験</span>
         </button>
       </nav>
 

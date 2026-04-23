@@ -9,32 +9,52 @@
 .app-nav {
   display: flex;
   justify-content: center;
-  gap: 4px;
-  padding: 12px 24px 0;
+  gap: 6px;
+  padding: 16px 24px 0;
   flex-shrink: 0;
+  border-bottom: 2px solid #e2e8f0;
 }
 
 .nav-tab {
-  padding: 8px 20px;
-  border: none;
-  border-radius: 10px 10px 0 0;
-  background: #e2e8f0;
-  font-size: 14px;
-  font-weight: 600;
-  color: #64748b;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 24px;
+  border: 2px solid #e2e8f0;
+  border-bottom: none;
+  border-radius: 12px 12px 0 0;
+  background: #f1f5f9;
+  font-size: 15px;
+  font-weight: 700;
+  color: #94a3b8;
   cursor: pointer;
-  transition: background 0.15s, color 0.15s;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  position: relative;
 }
 
-.nav-tab:hover {
-  background: #cbd5e1;
-  color: #334155;
+.nav-tab:hover:not(.nav-tab--active) {
+  background: #e2e8f0;
+  color: #475569;
+  border-color: #cbd5e1;
 }
 
 .nav-tab--active {
   background: #f8fafc;
   color: #1e293b;
+  border-color: #3b82f6;
+  border-bottom: 2px solid #f8fafc;
   cursor: default;
+  margin-bottom: -2px;
+  z-index: 1;
+}
+
+.nav-tab-icon {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.nav-tab-label {
+  line-height: 1;
 }
 
 /* ---------- header ---------- */
@@ -95,19 +115,27 @@
 
 /* ---------- dark mode ---------- */
 @media (prefers-color-scheme: dark) {
+  .app-nav {
+    border-bottom-color: #334155;
+  }
+
   .nav-tab {
     background: #1e293b;
     color: #64748b;
+    border-color: #334155;
   }
 
-  .nav-tab:hover {
+  .nav-tab:hover:not(.nav-tab--active) {
     background: #334155;
-    color: #e2e8f0;
+    color: #cbd5e1;
+    border-color: #475569;
   }
 
   .nav-tab--active {
     background: #0f172a;
     color: #f1f5f9;
+    border-color: #3b82f6;
+    border-bottom-color: #0f172a;
   }
 
   .app-header h1 {
