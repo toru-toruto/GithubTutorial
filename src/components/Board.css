@@ -1,18 +1,17 @@
 .board {
   flex-shrink: 0;
-  padding: 24px 32px 12px;
+  padding: 24px 0 12px;
   overflow-x: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .board-track {
   display: flex;
   align-items: center;
   gap: 0;
-  padding: 8px 0 52px;
+  padding: 8px 32px 52px;
   min-width: min-content;
+  width: fit-content;
+  margin: 0 auto;
   position: relative;
 }
 
