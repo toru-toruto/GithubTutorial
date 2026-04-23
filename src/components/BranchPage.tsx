@@ -62,6 +62,7 @@ export default function BranchPage() {
   const [mergeMode, setMergeMode] = useState(false);
   const [nextOrder, setNextOrder] = useState(1);
   const [cmdLogs, setCmdLogs] = useState<CmdLog[]>([]);
+  const [showHelp, setShowHelp] = useState(false);
   const logIdRef = useRef(0);
   const logEndRef = useRef<HTMLDivElement>(null);
 
@@ -222,10 +223,47 @@ export default function BranchPage() {
           <span className="bp-btn-icon">🔀</span>
           マージ
         </button>
+        <span className="bp-toolbar-spacer" />
         <button className="bp-btn bp-btn--reset" onClick={handleReset}>
           <span className="bp-btn-icon">🗑️</span>
           リセット
         </button>
+      </div>
+
+      {/* help toggle */}
+      <div className="bp-help-area">
+        <button
+          className="bp-btn bp-btn--help"
+          onClick={() => setShowHelp((v) => !v)}
+        >
+          <span className="bp-btn-icon">❓</span>
+          操作方法
+          <span className={`bp-help-chevron ${showHelp ? "bp-help-chevron--open" : ""}`}>▼</span>
+        </button>
+        {showHelp && (
+          <div className="bp-hints">
+            <div className="bp-hint-row">
+              <span className="bp-hint-title">🌿 ブランチを切る:</span>
+              <span className="bp-hint-step">1. 分岐元のノードを選択</span>
+              <span className="bp-hint-arrow">→</span>
+              <span className="bp-hint-step">2.「ブランチを切る」をクリック</span>
+            </div>
+            <div className="bp-hint-row">
+              <span className="bp-hint-title">💾 コミットを追加:</span>
+              <span className="bp-hint-step">1. 追加先ブランチのノードを選択</span>
+              <span className="bp-hint-arrow">→</span>
+              <span className="bp-hint-step">2.「コミットを追加」をクリック</span>
+            </div>
+            <div className="bp-hint-row">
+              <span className="bp-hint-title">🔀 マージ:</span>
+              <span className="bp-hint-step">1. マージ先のノードを選択</span>
+              <span className="bp-hint-arrow">→</span>
+              <span className="bp-hint-step">2.「マージ」をクリック</span>
+              <span className="bp-hint-arrow">→</span>
+              <span className="bp-hint-step">3. マージ元ブランチを選択</span>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* merge picker */}
@@ -425,6 +463,7 @@ export default function BranchPage() {
           <span>👆 コミットノードをクリックして選択してください</span>
         </div>
       )}
+
     </div>
   );
 }

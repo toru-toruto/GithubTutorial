@@ -84,6 +84,77 @@
   font-size: 16px;
 }
 
+.bp-toolbar-spacer {
+  width: 24px;
+}
+
+/* ---------- help area ---------- */
+.bp-help-area {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 24px 10px;
+  gap: 10px;
+}
+
+.bp-btn--help {
+  border-color: #94a3b8;
+  color: #64748b;
+}
+
+.bp-help-chevron {
+  font-size: 10px;
+  transition: transform 0.2s;
+  margin-left: 2px;
+}
+
+.bp-help-chevron--open {
+  transform: rotate(180deg);
+}
+
+/* ---------- operation hints ---------- */
+.bp-hints {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 14px 20px;
+  width: 100%;
+  max-width: 780px;
+}
+
+.bp-hint-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.bp-hint-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #475569;
+  min-width: 115px;
+}
+
+.bp-hint-step {
+  font-size: 11px;
+  color: #475569;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 2px 8px;
+}
+
+.bp-hint-arrow {
+  font-size: 12px;
+  color: #94a3b8;
+  flex-shrink: 0;
+}
+
 /* ---------- merge picker ---------- */
 .bp-merge-picker {
   text-align: center;
@@ -310,6 +381,30 @@
   .bp-btn--reset {
     border-color: #616161;
     color: #9e9e9e;
+  }
+
+  .bp-btn--help {
+    border-color: #64748b;
+    color: #94a3b8;
+  }
+
+  .bp-hints {
+    background: #1e293b;
+    border-color: #334155;
+  }
+
+  .bp-hint-title {
+    color: #94a3b8;
+  }
+
+  .bp-hint-step {
+    color: #94a3b8;
+    background: #0f172a;
+    border-color: #334155;
+  }
+
+  .bp-hint-arrow {
+    color: #64748b;
   }
 
   .bp-merge-label {
