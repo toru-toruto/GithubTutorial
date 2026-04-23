@@ -62,17 +62,15 @@ export default function BranchPage() {
   const [mergeMode, setMergeMode] = useState(false);
   const [nextOrder, setNextOrder] = useState(1);
   const [cmdLogs, setCmdLogs] = useState<CmdLog[]>([]);
-  const [logIdSeq, setLogIdSeq] = useState(0);
+  const logIdRef = useRef(0);
   const logEndRef = useRef<HTMLDivElement>(null);
 
   const selected = commits.find((c) => c.id === selectedId) ?? null;
 
   const pushLog = (lines: string[]) => {
-    setLogIdSeq((prev) => {
-      const newId = prev + 1;
-      setCmdLogs((logs) => [...logs, { id: newId, lines }]);
-      return newId;
-    });
+    logIdRef.current += 1;
+    const id = logIdRef.current;
+    setCmdLogs((logs) => [...logs, { id, lines }]);
   };
 
   useEffect(() => {
